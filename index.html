@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111512" />
+    <title>HighLife — Cellular observatory</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="HighLife home"
+        ><span class="brand-mark" aria-hidden="true">▦</span> HighLife<span
+          class="brand-sub"
+        >
+          / Cellular observatory</span
+        ></a
+      >
+      <span class="edition"
+        >An experiment in emergence <span>01 / B36·S23</span></span
+      >
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Simple rules. Unexpected worlds.</p>
+          <h1>Life, one tick at a time<span>.</span></h1>
+          <p class="lead">Plant a pattern. Let it evolve. See what survives.</p>
+        </div>
+        <div class="rule-badge">
+          <span class="status-dot"></span> HighLife rules
+          <strong>B36 / S23</strong>
+        </div>
+      </section>
+      <div class="workspace">
+        <section class="simulation" aria-label="Simulation">
+          <div class="board-header">
+            <div>
+              <span class="eyebrow">The universe</span>
+              <h2 id="pattern-title">Replicator</h2>
+            </div>
+            <span class="state-label" id="state-label">Paused</span>
+          </div>
+          <div class="board-wrap">
+            <canvas
+              id="universe"
+              tabindex="0"
+              aria-label="Editable universe. Arrow keys move the cursor; Enter toggles a cell. Plus and minus zoom."
+              aria-describedby="board-help"
+            ></canvas>
+            <div class="board-note">
+              <span class="status-dot"></span> Infinite grid
+              <span>·</span> finite window
+            </div>
+            <div class="view-controls">
+              <button id="zoom-out" aria-label="Zoom out">−</button
+              ><output id="zoom-level">100%</output
+              ><button id="zoom-in" aria-label="Zoom in">+</button
+              ><button id="fit" aria-label="Fit all live cells">Fit</button>
+            </div>
+            <span class="cursor-readout" id="cursor-readout">x 0 / y 0</span>
+          </div>
+          <div class="transport">
+            <div class="playback">
+              <button class="primary" id="play">▶ Run</button
+              ><button id="step">Step <span>→</span></button
+              ><button id="reset" title="Restore the last loaded pattern">
+                ↺ Reset
+              </button>
+            </div>
+            <label class="speed"
+              >Speed
+              <input
+                id="speed"
+                type="range"
+                min="1"
+                max="20"
+                value="6"
+              /><output id="speed-value">6 / s</output></label
+            >
+          </div>
+          <div class="board-footer" id="board-help">
+            <span
+              >Click or drag to draw · Shift-drag to pan · Scroll to zoom</span
+            ><span>Focus grid: arrows move · Enter draws</span>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="panel patterns">
+            <div class="section-heading">
+              <h2>Start with a spark</h2>
+              <span>01 — Patterns</span>
+            </div>
+            <p>Small beginnings. Very different futures.</p>
+            <div id="presets" class="preset-list"></div>
+            <div class="seed-actions">
+              <button id="random">↗ Random field</button
+              ><button id="clear">Clear grid</button>
+            </div>
+          </section>
+          <section class="panel rules">
+            <div class="section-heading">
+              <h2>The rules of life</h2>
+              <span>02 — Logic</span>
+            </div>
+            <div class="rule-row">
+              <span class="rule-icon born">+</span>
+              <div>
+                <h3>Born with 3 or 6</h3>
+                <p>A dead cell becomes alive.</p>
+              </div>
+            </div>
+            <div class="rule-row">
+              <span class="rule-icon survives">•</span>
+              <div>
+                <h3>Survive with 2 or 3</h3>
+                <p>A live cell stays alive.</p>
+              </div>
+            </div>
+            <div class="rule-row">
+              <span class="rule-icon dies">−</span>
+              <div>
+                <h3>Otherwise, fade away</h3>
+                <p>All other live cells die.</p>
+              </div>
+            </div>
+            <p class="rule-footnote">
+              Eight neighbors, including diagonals. Every cell updates at the
+              same time.
+            </p>
+          </section>
+        </aside>
+      </div>
+      <section class="telemetry" aria-label="Simulation statistics">
+        <div class="metric">
+          <span>Generation</span><strong id="generation">0000</strong
+          ><small>One tick, one new world</small>
+        </div>
+        <div class="metric">
+          <span>Living cells</span><strong id="population">12</strong
+          ><small id="change">Ready to evolve</small>
+        </div>
+        <div class="metric">
+          <span>Last transition</span
+          ><strong class="transition"
+            ><span id="births">+0</span><span id="deaths">−0</span></strong
+          ><small>Births / deaths</small>
+        </div>
+        <div class="history">
+          <div>
+            <span>Population over time</span><small>Last 120 ticks</small>
+          </div>
+          <svg
+            id="history"
+            viewBox="0 0 320 65"
+            role="img"
+            aria-label="Population history"
+          >
+            <path id="history-area" />
+            <path id="history-line" />
+          </svg>
+        </div>
+      </section>
+      <footer class="page-footer">
+        <span>Not quite Conway. A little more possibility.</span
+        ><span
+          >Six neighbors can spark a new life.
+          <strong>That changes everything.</strong></span
+        >
+      </footer>
+      <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

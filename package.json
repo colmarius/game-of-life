@@ -7,12 +7,16 @@
     "node": "24.22.2"
   },
   "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --host 0.0.0.0",
     "test": "vitest watch",
     "test:run": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "typescript": "7.0.2",
+    "vite": "8.3.6",
     "vitest": "5.1.0"
   }
 }

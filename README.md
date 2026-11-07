@@ -1,6 +1,25 @@
-# Coderetreat TypeScript starter
+# HighLife observatory
 
-A minimal playground for short practice rounds. No exercise implementation is included.
+A TypeScript cellular automaton with an interactive canvas UI. HighLife uses
+Conway's survival rules (2 or 3 neighbors), with births at 3 **or 6** neighbors.
+
+## Explore the universe
+
+Run `npm ci`, then `npm run dev`. Vite prints the development server address.
+Use `npm run build` for a production build and `npm run preview` to serve it locally.
+
+- Choose a replicator, glider, blinker, or block, or generate a random field.
+- Run/pause, step one generation, adjust speed, or reset the seed.
+- Click or drag to add/remove cells; edits pause playback and become the new seed.
+- Shift-drag to pan, scroll or use +/− to zoom, and use Fit to recenter.
+- Keyboard: focus the grid, use arrows to move, Enter to toggle a cell, and Space
+  to run/pause. The grid automatically follows the keyboard cursor.
+- The viewport is finite, but the simulation is not: off-screen cells still evolve.
+  Statistics count all cells, not only visible ones. Empty universes pause automatically.
+
+The engine in `src/life.ts` is independent of the UI. Patterns are held in memory;
+reloading the page starts fresh. `SPEC.md` records the original engine brief;
+the visualization was added separately.
 
 ## Prerequisites
 
@@ -24,7 +43,7 @@ Commit the starter once before your first round. Keep that commit as `HEAD` whil
 practicing; do not commit round work to it. Stop watch mode before resetting.
 
 The following commands **discard all tracked and untracked round work in `src/`**,
-restoring the starter smoke test. Copy anything you want to keep elsewhere first.
+restoring the committed code. Copy anything you want to keep elsewhere first.
 Dependencies and files outside `src/` are left alone.
 
 ```sh
