@@ -33,20 +33,26 @@ npm ci
 npm test          # watch mode; press q to quit
 npm run test:run  # run once
 npm run typecheck
+npm run build    # typecheck and build the browser app into dist/
 ```
 
 Put TypeScript code and tests in `src/`. Vitest discovers `*.test.ts` files.
+The current tests cover the engine and test-runner smoke test, not browser
+interactions. When changing the UI, also check the affected controls in a browser,
+including keyboard input and desktop/narrow-screen layouts.
 
-## Start fresh each round
+## Reset local exercise work
 
-Commit the starter once before your first round. Keep that commit as `HEAD` while
-practicing; do not commit round work to it. Stop watch mode before resetting.
+This checkout already contains the HighLife implementation and UI. Resetting to
+`HEAD` restores that implementation, not an empty starter. For a blank exercise,
+start a separate branch or worktree from the starter commit `4662296`.
+Stop watch mode before resetting.
 
-The following commands **discard all tracked and untracked round work in `src/`**,
-restoring the committed code. Copy anything you want to keep elsewhere first.
-Dependencies and files outside `src/` are left alone.
+The following commands **discard tracked changes and non-ignored untracked files
+in `src/`**, restoring the committed code. Copy anything you want to keep elsewhere
+first. Dependencies and files outside `src/` (including `index.html`) are left alone.
 
-```sh
+```sh copy Copy Reset Commands
 git restore --source=HEAD --staged --worktree -- src
 git clean -fd -- src
 npm test

@@ -1,4 +1,11 @@
-# Game of Life implementation spec
+# HighLife engine implementation spec
+
+This is the original engine-only implementation brief. The engine is now
+implemented, and the repository also includes a Vite-powered canvas UI added in
+a later session. The rules, public contract, and acceptance criteria below still
+apply to the engine; the session's exclusions (such as no UI) are not restrictions
+on the existing app. See `README.md` for usage and `AGENTS.md` for current
+repository guidance.
 
 ## Goal and scope
 
