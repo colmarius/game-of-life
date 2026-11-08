@@ -41,6 +41,30 @@ The current tests cover the engine and test-runner smoke test, not browser
 interactions. When changing the UI, also check the affected controls in a browser,
 including keyboard input and desktop/narrow-screen layouts.
 
+## Deploy to GitHub Pages
+
+In the repository's **Settings → Pages → Build and deployment**, set **Source**
+to **GitHub Actions** before the first deployment.
+
+`.github/workflows/deploy.yml` tests, typechecks, builds, and deploys on pushes to
+`main`. It can also be run manually from the Actions tab on `main`. A failed test
+or build prevents deployment. The workflow uses the Node.js version in `.nvmrc`
+and the committed npm lockfile, and publishes `dist/` through the `github-pages`
+environment rather than a separate branch.
+
+The build uses the base path reported by GitHub Pages, so assets and the home link
+work under the repository path. The expected URL for this repository is
+<https://marius-colacioiu.com/coderetreat-ts/> once deployment succeeds.
+
+To check the project-path build locally:
+
+```sh
+npm run build -- --base /coderetreat-ts/
+npm run preview -- --base /coderetreat-ts/
+```
+
+Open `/coderetreat-ts/` on the preview server's printed address.
+
 ## Reset local exercise work
 
 This checkout already contains the HighLife implementation and UI. Resetting to
