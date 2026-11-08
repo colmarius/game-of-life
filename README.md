@@ -54,16 +54,16 @@ environment rather than a separate branch.
 
 The build uses the base path reported by GitHub Pages, so assets and the home link
 work under the repository path. The expected URL for this repository is
-<https://marius-colacioiu.com/coderetreat-ts/> once deployment succeeds.
+<https://marius-colacioiu.com/game-of-life/> once deployment succeeds.
 
 To check the project-path build locally:
 
 ```sh
-npm run build -- --base /coderetreat-ts/
-npm run preview -- --base /coderetreat-ts/
+npm run build -- --base /game-of-life/
+npm run preview -- --base /game-of-life/
 ```
 
-Open `/coderetreat-ts/` on the preview server's printed address.
+Open `/game-of-life/` on the preview server's printed address.
 
 ## Reset local exercise work
 
